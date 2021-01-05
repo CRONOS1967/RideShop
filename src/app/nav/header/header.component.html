@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink=""
+    ><img id="logo" src="./../../../assets/logo.webp" class="desktop" />
+    <img id="logo" src="./../../../assets/logofooter.webp" class="phone"
+  /></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarCollapse"
+    aria-controls="navbarCollapse"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li routerLinkActive="nav-item active">
+        <a class="nav-link" routerLink="/"
+          >Home <span class="sr-only">(current)</span></a
+        >
+      </li>
+      <ng-template #buyer>
+        <li routerLinkActive="nav-item active">
+          <a class="nav-link" routerLink="login">Login</a>
+        </li>
+      </ng-template>
+
+      <li
+        *ngIf="authService.signedIn$ | async as user; else buyer"
+        class="nav-item dropdown"
+      >
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          {{ user.displayName || user.email }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/user', user.uid]"
+            >Dashbord</a
+          >
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logOut()">Logout</a>
+        </div>
+      </li>
+    </ul>
+
+    <button class="btn btn-outline-danger my-2 my-sm-0" (click)="search()">
+      Search
+    </button>
+  </div>
+</nav>

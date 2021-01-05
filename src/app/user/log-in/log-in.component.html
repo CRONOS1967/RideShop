@@ -1,0 +1,156 @@
+<div class="container mt-5 border border-info">
+  <div class="container mt-5 p-3">
+   
+    <div class="card">
+      <h3>Welcome to Ride Shop</h3>
+    </div>
+    <div id="accordianId" role="tablist" aria-multiselectable="true">
+      <a
+        data-toggle="collapse"
+        data-parent="#accordianId"
+        href="#section1ContentId"
+        aria-expanded="true"
+        aria-controls="section1ContentId"
+      >
+        <p class="text-primary text-center">Ready to Comeback</p>
+      </a>
+
+      <div
+        id="section1ContentId"
+        class="accordion-collapse collapse show"
+        role="tabpanel"
+        aria-labelledby="section1HeaderId"
+      >
+        <form class="mt-3" #login="ngForm" (ngSubmit)="loginUser(login)">
+          <div class="form-row">
+            <div class="col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                #email="ngModel"
+                ngModel
+                required
+                name="email"
+              />
+              <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+                <div *ngIf="email.errors.required">Email is required!</div>
+              </div>
+            </div>
+            <div class="col">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                #password="ngModel"
+                ngModel
+                required
+                minlength="6"
+                name="password"
+              />
+
+              <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                <div *ngIf="password.errors.required">password is required!</div>
+                <div *ngIf="password.errors.minlength">password is more than 6 characters!</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row my-3 px-5">
+            <button [disabled]="!login.valid" class="col btn btn-primary" type="submit"><div >login</div></button>
+          </div>
+        </form>
+        <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>Error!: {{error.code}}</strong> {{error.message}}
+        </div>
+      </div>
+      <div class="separator text-secondary">You can Join by single Click</div>
+      <div class="card-deck">
+        <div class="card">
+          <button (click)="loginGoogle()" class="btn btn-transparent">
+            <img
+              class="card-img-top"
+              src="./../../../assets/google.png"
+              alt=""
+            />
+          </button>
+        </div>
+        <div class="card">
+          <a (click)="loginFacebook()" class="btn btn-trasparent">
+            <img class="card-img-top" src="./../../../assets/fb.png" alt="" />
+          </a>
+        </div>
+      </div>
+
+      <a
+        data-toggle="collapse"
+        data-parent="#accordianId"
+        href="#section2ContentId"
+        aria-expanded="true"
+        aria-controls="section2ContentId"
+      >
+        <div class="separator text-info">Don't have account click me!</div>
+      </a>
+
+      <div
+        id="section2ContentId"
+        class="accordion-collapse collapse"
+        role="tabpanel"
+        aria-labelledby="section2HeaderId"
+      >
+        <form #signIn="ngForm" (ngSubmit)="createUser(signIn)">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              ngModel
+              #email="ngModel"
+              name="email"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              required
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="!email.valid && email.touched"
+            >
+              Email is Required
+            </div>
+            <small
+              *ngIf="email.touched"
+              id="emailHelp"
+              class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              ngModel
+              #password="ngModel"
+              name="password"
+              id="exampleInputPassword1"
+              required
+              minlength="6"
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="!password.valid && password.touched"
+            >
+              <div *ngIf="password.errors.required">Password is Required!</div>
+              <div *ngIf="password.errors.minlength">
+                Password must be more than 6 characters
+              </div>
+            </div>
+          </div>
+          <div *ngIf="error2" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!: {{error2.code}}</strong> {{error2.message}}
+          </div>
+          <button [disabled]="!signIn.valid" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

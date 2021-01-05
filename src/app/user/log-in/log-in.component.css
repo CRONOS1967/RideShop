@@ -1,0 +1,43 @@
+.card-img-top{
+    max-width: 5em;
+    max-height: 5em;
+     
+}
+.border{
+    border-radius: 5px;
+}
+.card{
+    align-items: center;
+    border: skyblue;
+}
+@media (max-width: 980px) {
+    .card-img-overlay{
+        display: block;
+    }
+  }
+  @media (min-width: 980px) {
+    .card-img-overlay{
+          display: none;
+      }
+    }
+    .col-bt-btn-primary{
+        max-width: 50em;
+    }
+
+    .separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+
+    }
+    .separator::before, .separator::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid skyblue;
+    }
+    .separator::before {
+        margin-right: .25em;
+    }
+    .separator::after {
+        margin-left: .25em;
+    }

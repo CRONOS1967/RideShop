@@ -1,0 +1,126 @@
+<div class="container row" *ngIf="userData | async as user">
+  <div class="col-md">
+    <div class="row">
+      <h3 class="text-alaign-left">Manage Your profile</h3>
+      <div class="justify-content-end">
+        <button
+          class="btn btn-outline-light text-dark btn-sm"
+          type="button"
+          data-toggle="collapse"
+          data-parent="#accordianId"
+          href="#section2ContentId"
+          aria-expanded="true"
+          aria-controls="section2ContentId"
+        >
+          Edit Profile
+        </button>
+      </div>
+    </div>
+    <div id="accordianId" role="tablist" aria-multiselectable="true">
+      <div class="row">
+        <div class="col">
+          <b>Your UserName</b>
+        </div>
+        <div class="col">
+          <h6>{{ user.name || "n/a" }}</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <b>Your E-mail</b>
+        </div>
+        <div class="col">
+          <h6>{{ user.email || "n/a" }}</h6>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <b>Phone Number</b>
+        </div>
+        <div class="col">
+          <h6>{{ user.phone || "n/a" }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div
+      id="section2ContentId"
+      class="accordion-collapse collapse"
+      role="tabpanel"
+      aria-labelledby="section2HeaderId"
+    >
+      <br />
+      <div class="container justify-content-end">
+        <form
+          (ngSubmit)="updateUsername(form.value)"
+          #form="ngForm"
+          class="row"
+        >
+          <div class="form-group col-md-8">
+            <input
+              ngModel
+              #name="ngModel"
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              placeholder="Your username"
+              required
+            />
+            <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+              <div *ngIf="name.errors.required">user name is required</div>
+            </div>
+          </div>
+          <div class="col col-md-4">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!form.valid"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+        <form (ngSubmit)="updatephone(formphone.value)" #formphone="ngForm" class="row">
+          <div class="form-group col-md-8">
+            <input
+              ngModel
+              #number="ngModel"
+              type="number"
+              name="number"
+              id="number"
+              class="form-control"
+              placeholder="Your Phone Number"
+              required
+            />
+            <small>This number will be used to contact you</small>
+            <div
+              class="alert alert-danger"
+              *ngIf="number.touched && !number.valid"
+            >
+              <div *ngIf="number.errors.required">phone number is required</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!formphone.valid"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+        <div class="d-grid gap-2 d-md-flex justify-content-end">
+          <hr />
+          <button type="button" class="btn btn-danger" (click)="deleteUser()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

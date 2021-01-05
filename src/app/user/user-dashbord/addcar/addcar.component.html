@@ -1,0 +1,316 @@
+<br />
+
+<div class="container border rounded">
+  <div class="alert alert-info"> Make sure u registerd Phone number to get contacted on your ads</div>
+  <br />
+  <div class="container">
+    <form #addCarForm="ngForm" (ngSubmit)="addCar(addCarForm)">
+      <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Car Model</label>
+        <input
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder=" eg. Toyota corola "
+          name="carModel"
+          ngModel
+          minlength="3"
+          #carModel="ngModel"
+          required
+        />
+        <div
+          *ngIf="!carModel.valid && carModel.touched"
+          class="alert alert-danger"
+        >
+          <div *ngIf="carModel.errors.required">Car Model is Required!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="carMake">Select Car Make</label>
+          <select
+            class="form-control"
+            name="carMake"
+            ngModel
+            #carMake="ngModel"
+            required
+            id="carMake"
+          >
+            <option *ngFor="let make of getCarMake()" value="{{ make }}">
+              {{ make }}
+            </option>
+          </select>
+          <div
+            class="alert alert-danger"
+            *ngIf="!carMake.valid && carMake.touched"
+          >
+            <div *ngIf="carMake.errors.required">car make is require</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="carPrice">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              name="carPrice"
+              id="carPrice"
+              placeholder="Eth"
+              #carPrice="ngModel"
+              ngModel
+              required
+            />
+            <div
+              class="alert alert-danger"
+              *ngIf="carPrice.touched && !carPrice.valid"
+            >
+              <div *ngIf="carPrice.errors.required">Price is Required</div>
+            </div>
+            <div
+              class="alert alert-danger"
+              *ngIf="carPrice.touched && !carPrice.value as p"
+            >
+              Price can't be zero!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="carMake">Price Type</label>
+            <select
+              class="form-control"
+              name="priceType"
+              id="priceType"
+              #priceType="ngModel"
+              ngModel
+              required
+            >
+              <option value="negotiable">Negotiable</option>
+              <option value="fixed">Fixed</option>
+              <option value="price on call">Price on Call</option>
+            </select>
+            <div
+              class="alert alert-danger"
+              *ngIf="priceType.touched && !priceType.valid"
+            >
+              <div *ngIf="priceType.errors.required">
+                price type is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="year">Year</label>
+            <input
+              type="number"
+              class="form-control"
+              name="year"
+              ngModel
+              #year="ngModel"
+              required
+              id="year"
+              placeholder="YYYY"
+            />
+          </div>
+
+          <div class="alert alert-danger" *ngIf="year.touched && !year.valid">
+            <div *ngIf="year.errors.required">Year is required</div>
+          </div>
+
+          <div
+            *ngIf="year.touched && greaterthan(year.value)"
+            class="alert alert-danger"
+          >
+            You can sell cars year after 1900
+          </div>
+          <div
+            *ngIf="year.touched && lessthanval(year.value)"
+            class="alert alert-danger"
+          >
+            you are not able to sell cars year after {{ date + 1 }}
+          </div>
+          <div
+            *ngIf="year.touched && !nLength(year.value)"
+            class="alert alert-danger"
+          >
+            Write correct form of year!
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="carMake">Engine</label>
+            <select
+              class="form-control"
+              name="engine"
+              id="engine"
+              ngModel
+              #engine="ngModel"
+              required
+            >
+              <option value="Diesel">Diesel</option>
+              <option value="Benzine">Benzine</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+            <div
+              class="alert alert-danger"
+              *ngIf="engine.touched && !engine.valid"
+            >
+              <div *ngIf="engine.errors.required">engine type is required</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="type">Body Type</label>
+            <select
+              class="form-control"
+              name="bodyType"
+              id="type"
+              ngModel
+              #bodyType="ngModel"
+              required
+            >
+              <option value="car">Car</option>
+              <option value="van">Van</option>
+              <option value="truck">Truck</option>
+              <option value="motorcycle">Motorcycle</option>
+            </select>
+            <div
+              *ngIf="bodyType.touched && !bodyType.valid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="bodyType.errors.required">Car Type is required</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="location">City</label>
+            <input
+              type="text"
+              class="form-control"
+              name="city"
+              id="location"
+              ngModel
+              placeholder="Where you reside"
+              #city="ngModel"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="type">Condition</label>
+            <select
+              class="form-control"
+              name="condition"
+              id="condition"
+              ngModel
+              #condition="ngModel"
+              required
+            >
+              <option>New</option>
+              <option>Used</option>
+              <option>slightly Used</option>
+            </select>
+            <div
+              *ngIf="condition.touched && !condition.valid"
+              class="alert alert-danger"
+            >
+              <div *ngIf="condition.errors.required">
+                Condition is required!
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="type">Transsmission</label>
+            <select
+              class="form-control"
+              name="transsmission"
+              id="transsmission"
+              ngModel
+              #transsmission="ngModel"
+            >
+              <option value="automatic" default>Automatic</option>
+              <option value="manual">Manual</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="exampleColorInput" class="form-label">Color picker</label>
+          <input
+            type="color"
+            class="form-control form-control-color"
+            id="exampleColorInput"
+            value="#ff0000"
+            title="Choose your color"
+            name="color"
+            ngModel
+            #color="ngModel"
+            required
+          />
+          <div class="alert alert-danger" *ngIf="color.touched && !color.valid" >
+            <div *ngIf="color.errors.required"> Choose Color please</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12">
+          <label class="control-label"
+            >Photos for your ad
+            <small
+              >Only allowed jpg, png and jpeg and max file will not more than
+              1MB</small
+            ></label
+          >
+          <div id="dropzone" class="dropzone dz-clickable" >
+            <div class="dz-default dz-message">
+              <span class="hiddenFileInput" style=" background-image: url({{imgUrl}});"
+                ><input
+                  type="file"
+                  name="photo"
+                  ngModel
+                  #photo="ngModel"
+                  accept=".jpg, .png, .jpeg"     
+                  required
+                  (change)="selectedImg($event)"
+              /></span>
+            </div>
+          </div>
+          <div class="alert alert-danger" *ngIf="photo.touched && !photo.valid">
+            <div *ngIf="photo.errors.required">Pitcure of your car is required</div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row justify-content-end">
+        <button
+          class="btn btn-success btn-lg"
+          type="submit"
+          [disabled]="!addCarForm.valid"
+          (click)="show = !show"
+        >
+          Submit your car
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+ 
+<ng-template [ngIf]="show">
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+</div>
+</ng-template>
+

@@ -1,0 +1,162 @@
+<br />
+<div class="container" *ngIf="(carData|async) as car" >
+  <div class="container-fluid">
+    <div class="row rounded  text-secondary">
+      <h1>{{car.make}} {{car.model}}</h1>
+    </div>
+    
+    <div class="row">
+      <br>
+      <div class="col-md">
+        <img id="pic" class="img-fluid" src="{{car.picture}}" alt="" />
+      </div>
+      <div class="col-md">
+        <div class="row">
+          <div class="col">
+            <h2>{{car.description.price}}</h2>
+          </div>
+          <div class="col-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="40"
+              height="40"
+              fill="currentColor"
+              class="bi bi-tags-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 7.586 1H3zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+              <path
+                d="M1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="row">
+          <h3>{{car.model}}</h3>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md">
+            <div class="row">
+              <div class="col-3 mx-0">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-telephone-outbound-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </div>
+              <div class="col">
+                <p>{{car.phone}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="row">
+              <div class="col-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-cash-stack"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M14 3H1a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1h-1z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M15 5H1v8h14V5zM1 4a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H1z"
+                  />
+                  <path
+                    d="M13 5a2 2 0 0 0 2 2V5h-2zM3 5a2 2 0 0 1-2 2V5h2zm10 8a2 2 0 0 1 2-2v2h-2zM3 13a2 2 0 0 0-2-2v2h2zm7-4a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
+                  />
+                </svg>
+              </div>
+              <div class="col">
+                <p>{{car.description.priceType}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <div class="row">
+              <div class="col-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="currentColor"
+                  class="bi bi-funnel-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"
+                  />
+                </svg>
+              </div>
+              <div class="col">
+                <p>{{car.description.engine}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="row">
+              <div class="col-3">
+                <img
+                  src="./../../../../assets/color.png"
+                  width="30"
+                  height="30"
+                  alt=""
+                />
+              </div>
+              <div class="col"><div style="width: 25%; height: 100%; background-color: {{car.description.color}};" ></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md container">Advert goes here</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row card">
+      <div class="card-body">
+        <h4 class="card-title">Description</h4>
+        <div class="row">
+          <div class="col-4">
+            <div class="card-text">Price: {{car.description.price}}</div>
+            <div class="card-text">Condition: {{car.description.condition}}</div>
+            <div class="card-text">Body: {{car.description.body}}</div>
+            <div class="card-text">Color: <small style="width: 100%; height: 100%; background-color: red;" ></small></div>
+          </div>
+          <div class="col-4">
+            <div class="card-text">Engine: {{car.description.engine}}</div>
+            <div class="card-text">Type: {{car.description.priceType}}</div>
+            <div class="card-text">Transmission: {{car.description.transsmission}}</div>
+            <div class="card-text">Location: {{car.description.location}}</div>
+          </div>
+
+          <div class="col-4 card-text">Year: {{car.year}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 
+ <div *ngIf="(carData|async) as car">
+ <h1>{{ car.make}}</h1>
+ <img src="{{ car.picture }}" alt="..." />
+ </div> -->
