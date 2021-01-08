@@ -14,8 +14,7 @@ export class CarlistComponent implements OnInit {
   filterdCars;
   constructor(
     private carService: CarsService,
-    private route: Router,
-    
+    private route: Router   
   ) {}
   showSearch: boolean;
   ngOnInit(): void {

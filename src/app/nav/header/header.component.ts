@@ -19,5 +19,5 @@ export class HeaderComponent implements OnInit {
   search(){
     this.router.navigateByUrl('/list')
   }
-  
+ 
 }

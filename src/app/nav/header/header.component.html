@@ -1,29 +1,42 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" routerLink=""
+<mat-toolbar>
+  <nav class="navbar navbar-expand-md bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="/"
     ><img id="logo" src="./../../../assets/logo.webp" class="desktop" />
     <img id="logo" src="./../../../assets/logofooter.webp" class="phone"
   /></a>
   <button
     class="navbar-toggler"
+    mat-mini-fab
     type="button"
+    color="primary"
     data-toggle="collapse"
     data-target="#navbarCollapse"
     aria-controls="navbarCollapse"
     aria-expanded="false"
     aria-label="Toggle navigation"
   >
-    <span class="navbar-toggler-icon"></span>
+  <mat-icon >menu</mat-icon>
   </button>
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li routerLinkActive="nav-item active">
-        <a class="nav-link" routerLink="/"
-          >Home <span class="sr-only">(current)</span></a
+      <li >
+        <button mat-flat-button color="primary" routerLinkActive="text-dark" routerLink="/"
+          >Home </button
+        >
+      </li>
+      <li >
+        <button mat-flat-button color="primary" routerLinkActive="text-dark"   routerLink="/about"
+          >About </button
+        >
+      </li>
+      <li >
+        <button mat-flat-button color="primary" routerLinkActive="text-dark"  routerLink="/contact"
+          >Contact Us  </button
         >
       </li>
       <ng-template #buyer>
-        <li routerLinkActive="nav-item active">
-          <a class="nav-link" routerLink="login">Login</a>
+        <li >
+          <button mat-flat-button color="primary" routerLinkActive="text-dark" routerLink="/login">Login</button>
         </li>
       </ng-template>
 
@@ -31,9 +44,9 @@
         *ngIf="authService.signedIn$ | async as user; else buyer"
         class="nav-item dropdown"
       >
-        <a
+        <button
           class="nav-link dropdown-toggle"
-          href="#"
+          mat-flat-button color="primary" routerLinkActive="text-dark"
           id="navbarDropdown"
           role="button"
           data-toggle="dropdown"
@@ -41,19 +54,22 @@
           aria-expanded="false"
         >
           {{ user.displayName || user.email }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/user', user.uid]"
-            >Dashbord</a
+        </button>
+        <div class="dropdown-menu bg-light"  aria-labelledby="navbarDropdown">
+          <button class="dropdown-item text-left" mat-button color="primary" [routerLink]="['/user', user.uid]"
+            >Dashbord</button
           >
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="logOut()">Logout</a>
+          <button class="dropdown-item text-left" mat-button color="primary"(click)="logOut()">Logout</button>
         </div>
       </li>
     </ul>
 
-    <button class="btn btn-outline-danger my-2 my-sm-0" (click)="search()">
+    <button class="btn btn-outline-danger my-2 my-sm-0" mat-button color="primary" [routerLink]="['/list']">
       Search
     </button>
   </div>
 </nav>
+</mat-toolbar>
+ 
+ 
