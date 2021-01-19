@@ -4,7 +4,9 @@
       <h3 class="text-alaign-left">Manage Your profile</h3>
       <div class="justify-content-end">
         <button
-          class="btn btn-outline-light text-dark btn-sm"
+        mat-button
+        
+          class="btn btn-sm text-white"
           type="button"
           data-toggle="collapse"
           data-parent="#accordianId"
@@ -19,28 +21,34 @@
     <div id="accordianId" role="tablist" aria-multiselectable="true">
       <div class="row">
         <div class="col">
-          <b>Your UserName</b>
+          <h4><b>Your UserName</b></h4>
         </div>
         <div class="col">
-          <h6>{{ user.name || "n/a" }}</h6>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col">
-          <b>Your E-mail</b>
-        </div>
-        <div class="col">
-          <h6>{{ user.email || "n/a" }}</h6>
+          <h3>{{ user.name || "n/a" }}</h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
-          <b>Phone Number</b>
+          <h4>
+
+            <b>Your E-mail</b>
+          </h4>
         </div>
         <div class="col">
-          <h6>{{ user.phone || "n/a" }}</h6>
+          <h3>{{ user.email || "n/a" }}</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4>
+
+            <b>Phone Number</b>
+          </h4>
+        </div>
+        <div class="col">
+          <h3>{{ user.phone || "n/a" }}</h3>
         </div>
       </div>
     </div>
@@ -76,6 +84,7 @@
           </div>
           <div class="col col-md-4">
             <button
+            mat-raised-button
               type="submit"
               class="btn btn-primary"
               [disabled]="!form.valid"
@@ -85,7 +94,8 @@
           </div>
         </form>
         <form (ngSubmit)="updatephone(formphone.value)" #formphone="ngForm" class="row">
-          <div class="form-group col-md-8">
+          <div class="form-group input-group col-md">
+            <span class="input-group-text" id="basic-addon1">+251</span>
             <input
               ngModel
               #number="ngModel"
@@ -96,7 +106,6 @@
               placeholder="Your Phone Number"
               required
             />
-            <small>This number will be used to contact you</small>
             <div
               class="alert alert-danger"
               *ngIf="number.touched && !number.valid"
@@ -106,6 +115,7 @@
           </div>
           <div class="col-md-4">
             <button
+            mat-raised-button
               type="submit"
               class="btn btn-primary"
               [disabled]="!formphone.valid"
@@ -116,9 +126,9 @@
         </form>
         <div class="d-grid gap-2 d-md-flex justify-content-end">
           <hr />
-          <button type="button" class="btn btn-danger" (click)="deleteUser()">
+          <!-- <button type="button" class="btn btn-danger" (click)="deleteUser()">
             Delete
-          </button>
+          </button> -->
         </div>
       </div>
     </div>

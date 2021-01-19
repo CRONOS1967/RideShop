@@ -1,53 +1,61 @@
-<br /><br />
 <div class="container" *ngIf="userData as user">
-  <div class="container-fluid border border-dark rounded">
-    <br />
-    <div class="row align-items-start">
-      <div class="col-md-2">
-        <img
-          class="img-thumbnail"
-          src="./../../../assets/car-1.jpg"
-          alt=""
-          srcset=""
-        />
+  <mat-card>
+    <mat-card-header>
+      <div class="row align-items-start">
+        <div class="col-md-4">
+          <img
+            class="img-thumbnail"
+            src="./../../../assets/car-1.jpg"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="col-md align-items-center">
+          <h2>{{ user.displayName || user.email }}</h2>
+        </div>
       </div>
-      <div class="col-md-2">
-        <h4>{{ user.displayName || user.email }}</h4>
-      </div>
-
-      <div class="col-md-8 align-self-end">
+    </mat-card-header>
+    <mat-card-content>
+      <div class="col-md-8 align-self-end mt-2">
         <ul class="nav nav-tabs">
-          <li class="nav-item ">
+          <li class="nav-item m-1">
             <a
-              class="nav-link link-dark"
-              routerLinkActive="active"
+              mat-raised-button
+              color="primary"
+              class="nav-link"
+              routerLinkActive="active bg-dark"
               [routerLink]="[{ outlets: { userTab: ['posts'] } }]"
               >My Posts
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item m-1">
             <a
-              class="nav-link link-dark"
-              routerLinkActive="active"
+              mat-raised-button
+              color="primary"
+              class="nav-link"
+              routerLinkActive="active bg-dark"
               [routerLink]="[{ outlets: { userTab: ['profile'] } }]"
               >user profile</a
             >
           </li>
-          <li class="nav-item">
+          <li class="nav-item m-1">
             <a
-              class="nav-link link-dark"
-              routerLinkActive="active"
+              mat-raised-button
+              color="primary"
+              class="nav-link"
+              routerLinkActive="active bg-dark"
               [routerLink]="[{ outlets: { userTab: ['addCar'] } }]"
               >Add Car</a
             >
           </li>
         </ul>
       </div>
-    </div>
-  </div>
-  <br />
-  <div class="container border border-danger">
-    <router-outlet name="userTab"></router-outlet>
-  </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="container">
+        <router-outlet name="userTab"></router-outlet>
+      </div>
+    </mat-card-actions>
+  </mat-card>
 </div>
 <!-- *ngIf="userData as user "-->

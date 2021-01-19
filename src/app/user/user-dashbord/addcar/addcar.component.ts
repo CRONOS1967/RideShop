@@ -16,7 +16,8 @@ export class AddcarComponent implements OnInit {
     private as: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private userService:UserService
+    private userService:UserService,
+ 
   ) {}
   show: boolean = false;
 
@@ -32,13 +33,16 @@ export class AddcarComponent implements OnInit {
   userData;
   phone;
   ngOnInit(): void {
+    
     console.log(this.date);
     this.as.signedIn$.subscribe((data) => {
       console.log(data.uid);
       this.userData = data.uid;
       this.getPhone();
     });
+   
   }
+ 
   selectedImg(event) {
     this.images = event.target.files;
   }

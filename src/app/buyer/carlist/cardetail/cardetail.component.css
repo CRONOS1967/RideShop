@@ -1,5 +1,14 @@
 #pic {
-    width: 40rem;
-    height: 30rem;
-  }
+  width: 40rem;
+  height: 30rem;
+}
+.card-img {
+  float: left;
+  width: 100%;
+  max-width: 200%;
+  height: auto;
   
+}
+.card-img-cover {
+  overflow: hidden;
+}

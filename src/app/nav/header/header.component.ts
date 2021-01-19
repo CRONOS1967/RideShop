@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/shared/service/auth.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  isActive=true;
   constructor(public authService: AuthService,private router: Router) {}
 
   ngOnInit(): void {}

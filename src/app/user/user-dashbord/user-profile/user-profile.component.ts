@@ -54,14 +54,14 @@ export class UserProfileComponent implements OnInit {
         console.log(err);
       });
   }
-  deleteUser() {
-    // this.userService.userCollection.doc(this.userId).delete();
-    this.carService.getPosts(this.userId).doc().delete();
-    this.userService.reAuthenticate().then(() => {
-      this.userService.fb
-        .delete()
-        .then(() => this.router.navigate(['home']))
-        .catch((err) => console.log(err));
-    });
-  }
+  // deleteUser() {
+  //   // this.userService.userCollection.doc(this.userId).delete();
+  //   this.carService.getPosts(this.userId).doc().delete();
+  //   this.userService.reAuthenticate().then(() => {
+  //     this.userService.fb
+  //       .delete()
+  //       .then(() => this.router.navigate(['home']))
+  //       .catch((err) => console.log(err));
+  //   });
+  // }
 }

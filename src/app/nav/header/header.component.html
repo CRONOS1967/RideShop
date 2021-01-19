@@ -1,5 +1,5 @@
-<mat-toolbar>
-  <nav class="navbar navbar-expand-md bg-dark fixed-top">
+ 
+  <mat-toolbar class="navbar navbar-expand-md fixed-top" [class.mat-elevation-z24]="isActive">
   <a class="navbar-brand" routerLink="/"
     ><img id="logo" src="./../../../assets/logo.webp" class="desktop" />
     <img id="logo" src="./../../../assets/logofooter.webp" class="phone"
@@ -20,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li >
-        <button mat-flat-button color="primary" routerLinkActive="text-dark" routerLink="/"
+        <button mat-flat-button color="primary" routerLinkActive="text-dark"  [routerLink]="['/list']"
           >Home </button
         >
       </li>
@@ -55,7 +55,7 @@
         >
           {{ user.displayName || user.email }}
         </button>
-        <div class="dropdown-menu bg-light"  aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdown">
           <button class="dropdown-item text-left" mat-button color="primary" [routerLink]="['/user', user.uid]"
             >Dashbord</button
           >
@@ -65,11 +65,11 @@
       </li>
     </ul>
 
-    <button class="btn btn-outline-danger my-2 my-sm-0" mat-button color="primary" [routerLink]="['/list']">
+    <button class="btn btn-outline-danger my-2 my-sm-0" mat-button-raised color="warn" [routerLink]="['/list']">
       Search
     </button>
   </div>
-</nav>
 </mat-toolbar>
+
  
  

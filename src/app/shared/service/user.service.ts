@@ -13,7 +13,7 @@ import { AuthService } from './auth.service';
 })
 export class UserService {
   userCollection: AngularFirestoreCollection = this.db.collection('users');
-  fb = firebase.auth().currentUser;
+
   user;
   constructor(
     private db: AngularFirestore,
@@ -32,6 +32,7 @@ export class UserService {
       .catch((error) => console.log(error));
   }
   reAuthenticate(){
-   return this.fb.reauthenticateWithCredential(this.user);
+    const   fb = firebase.auth().currentUser;
+   return fb.reauthenticateWithCredential(this.user);
   }
 }

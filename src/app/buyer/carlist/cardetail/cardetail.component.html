@@ -1,4 +1,4 @@
-<br />
+<!-- <br />
 <div class="container" *ngIf="(carData|async) as car" >
   <div class="container-fluid">
     <div class="row rounded  text-secondary">
@@ -160,3 +160,66 @@
  <h1>{{ car.make}}</h1>
  <img src="{{ car.picture }}" alt="..." />
  </div> -->
+<div class="container-fluid m-1 p-1 row justify-content-center" *ngIf="carData | async as car">
+  <mat-card class="col-md-8 m-1">
+    <mat-card-header>
+      <mat-card-title
+        ><h1>
+          {{ car.model | uppercase }}
+        </h1></mat-card-title
+      >
+      <mat-card-subtitle
+        ><h2>{{ car.make }}</h2></mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content class="card-img-cover">
+      <img class="card-img" src="{{ car.picture }}" alt="" srcset="" />
+    </mat-card-content>
+  </mat-card>
+  <div class="col-md-3">
+    <mat-card>
+      <mat-card-header>
+        <h1> <mat-card-title>Description</mat-card-title></h1>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>
+          <div>Price: <mat-icon>attach_money</mat-icon>{{car.description.price | currency:' '}}</div>
+          <div>Fuel: {{ car.description.engine }} <mat-icon> ev_station</mat-icon></div>
+          <div>Body: {{car.description.body}} <mat-icon>drive_eta</mat-icon></div>
+          Color: <mat-icon> format_color_fill</mat-icon> <div style="width: 25%; height: 100%; background-color: {{car.description.color}};">&nbsp;</div>
+          <div>Year:  {{car.year}}	<mat-icon>date_range</mat-icon></div>
+        </h2>
+      </mat-card-content>
+      <mat-card-actions>
+        Contact Seller: {{car.phone}} <a mat-raised-button color="primary" href="tel:{{car.phone}}"><mat-icon>perm_phone_msg</mat-icon></a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="container-fluid m-2">
+    <mat-card>
+      <mat-card-content
+        >
+        <h3>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="card-text">Price: {{car.description.price | currency}}</div>
+              <div class="card-text">Condition: {{car.description.condition | uppercase}}</div>
+              <div class="card-text">Body: {{car.description.body | uppercase}}</div>
+              <div class="card-text">Color: <div style="width: 25%; height: 100%; background-color: {{car.description.color}};">&nbsp;</div></div>
+            </div>
+            <div class="col-4">
+              <div class="card-text">Engine: {{car.description.engine | uppercase}}</div>
+              <div class="card-text">Type: {{car.description.priceType | uppercase}}</div>
+              <div class="card-text">Transmission: {{car.description.transsmission | uppercase}}</div>
+              <div class="card-text">Location: {{car.description.location | uppercase}}</div>
+            </div>
+            
+            <div class="col-4 card-text">Year: {{car.year}}</div>
+          </div>
+        </h3>
+      </mat-card-content>
+   
+    </mat-card>
+  </div>
+</div>

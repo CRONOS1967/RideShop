@@ -14,6 +14,8 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatIconModule } from "@angular/material/icon";
 import { MatDividerModule } from "@angular/material/divider";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const MaterialComponets = [
   MatAutocompleteModule,
@@ -31,6 +33,8 @@ const MaterialComponets = [
   MatIconModule,
   MatToolbarModule,
   MatDividerModule,
+  MatPaginatorModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
